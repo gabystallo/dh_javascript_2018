@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		
+		//////////// función común con un parámetro default
+		// function f(a, b) {
+		// 	if(b===undefined) {
+		// 		b = 5;
+		// 	}
+		// 	console.log(a);
+		// 	console.log(b);
+		// }
+
+		// f(2);
+		///////////////////////////////////////
+
+		////////////////// funciones anónimas
+		// var f;
+		// var g;
+		// f = function() {
+		// 	console.log('hola, soy una función anónima');
+		// }
+		// g = f;
+		// g();
+		///////////////////////////////////////
+
+
+		/////////////////funciones anidadas y alcances locos
+		// var a = 3;
+
+		// function f1() {
+		// 	//var a = 4;
+		// 	a = 4;
+		// 	console.log('soy f1, y a vale ' + a);
+
+		// 	function f2() {
+		// 		var a = 5;
+		// 		console.log('soy f2, y a vale ' + a);				
+		// 	}
+
+		// 	f2();
+		// }
+
+		// f1();
+
+		// console.log('soy el contexto global y a vale ' + a);
+		////////////////////////
+
+
+
+		////////// CALLBACKS Y CONCURRENCIA //////
+		// function a(funcion_a_ejecutar_despues) {
+
+		// 	//la variable funcion_a_ejecutar_despues es un CALLBACK
+		// 	setTimeout(
+		// 		function() {
+		// 			console.log('a viene primero');	
+		// 			funcion_a_ejecutar_despues();
+		// 		},
+
+		// 		2000
+		// 	);
+			
+		// 	console.log('otra cosa');
+		// }
+
+		// function b() {
+		// 	console.log('b viene segundo');
+		// }
+
+		// //console.log(typeof(b));
+		// //a(b); //o puedo llamar con una función anónima:
+		
+		// a(function() { console.log('soy b anoníma') }); //estoy pasando b como callback
+		///////////////////////////////////////
+
+		////// ALGUNAS COSAS DE MATH ////////////
+		// var exponente = Math.pow(2, 3);
+		// console.log(exponente);
+
+		// var raiz = Math.sqrt(64);
+		// console.log(raiz);
+
+		////Math.floor -> truncar un número
+		////Math.round -> redondear un número
+		////typeof -> recibe cualquier variabe y devuelve una string con el tipo de la variable
+		///////////////////////////////////////
+
+
+		//ejercicio 5 de la práctica
+		function miSandwich(ingrediente_1, ingrediente_2, callback) {
+			console.log('estoy comiendo un sambuche de ' + ingrediente_1 + ' y ' + ingrediente_2);
+			callback();
+		}
+		
+		miSandwich('bondiola', 'cebolla', function() { console.log('terminé mi sambuche'); });
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		
+
+		var edad = 32;
+
+		var persona = {
+			nombre: 'gaby',
+			apellido: 'stallo',
+			edad: edad,
+			saludar: function() { console.log('hola, ' + this.nombre); }
+			
+		}
+
+		//acceso a las propiedades de 2 maneras:
+		//como si fuera un array asociativo y como si fuera un objeto:
+		/////////////
+		//persona['nombre'] = 'otro';
+		//console.log(persona.nombre);
+		////////////////////////////////////////////////////
+		persona.nombre = 'pepe';
+
+		persona.saludar();
+
+	</script>
+</body>
+</html>

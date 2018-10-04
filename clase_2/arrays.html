@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		
+
+		var personas = ['gaby', 'kevin', 'ale'];
+
+
+		// RECORRER ARRAY CON UN for COMÚN///
+		// for(i=0; i<personas.length; i++) {
+		// 	console.log('hola, ' + personas[i]);
+		// }
+		////////////////
+
+		// RECORRER ARRAY CON EL MÉTODO forEach DE LOS ARRAY EN JS
+		// personas.forEach(function(persona) {
+		// 	console.log('hola, ' + persona);
+		// });
+		////////////////
+
+
+		// MÉTODO map DE LOS ARRAY EN JAVASCRIPT
+		// var saludos;
+
+		// saludos = personas.map(function(persona) {
+		// 	return 'hola, ' + persona;
+		// });
+
+		// console.log(saludos);
+		////////////////
+
+		// MÉTODO filter DE LOS ARRAY EN JAVASCRIPT
+		// var noGabys = personas.filter(function(persona) {
+		// 	return (persona!='gaby');
+		// });
+
+		// console.log(noGabys);
+
+		// REDUCE MULTIPLICADOR
+		// var numeros = [1, 5, 7];
+
+		// var multiplicados = numeros.reduce(
+		// 	function(total, numero) {
+		// 		return total * numero;
+		// 	},
+		// 	1
+		// );
+
+		// console.log(multiplicados);
+		//////////////////////////////
+
+		// largo de un array
+		//console.log('en el array de personas hay ' + personas.length + ' items');
+
+		// JOIN y SPLIT
+		var personas_separadas_por_coma = personas.join(', ');
+		console.log(personas_separadas_por_coma);
+
+		var array_de_nuevo = personas_separadas_por_coma.split(', ');
+		console.log(array_de_nuevo);
+		/////////////
+	</script>
+</body>
+</html>

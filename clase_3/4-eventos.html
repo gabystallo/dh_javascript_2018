@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Página</title>
+	<meta charset="utf-8">
+
+
+	<script type="text/javascript">
+
+		
+
+		window.onload = function() {
+
+
+
+			console.log('terminó de cargar toda la página, ahora ejecuto');
+
+			var boton = document.getElementById('btn');
+
+			//boton.innerHTML = 'aaa';
+
+			boton.onclick = function() {
+
+				alert('tocaste el botón');
+
+				document.title = 'otro título';
+
+			}
+
+
+		}
+
+	</script>
+
+</head>
+<body>
+
+
+	<h1>Soy un html</h1>
+
+	<p>Soy un párrafo</p>
+
+	<button id="btn">Botón</button>
+
+	<p><a href="otra-pagina.html">Ir a otra página</a></p>
+
+
+
+</body>
+</html>

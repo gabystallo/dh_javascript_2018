@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		a { display:block; }
+	</style>
+	<script>
+		window.onload = function() {
+			var titulo = document.querySelector('h1');
+			console.log(titulo);
+
+			// var parrafos = document.getElementsByClassName('parrafo');
+			// //recorremos así, porque lo que devuelve getElementsByClassName no
+			// //tiene el método forEach
+			// for(i=0; i<parrafos.length; i++) {
+			// 	parrafos[i].style.color = 'blue';
+			// }
+
+
+			var parrafos = document.querySelectorAll('.parrafo');
+			parrafos.forEach(function(elemento) {
+				elemento.style.color = '#ff0000';
+			});
+			parrafos[1].style.color = 'blue';
+
+			// var boton = document.querySelector('#btn-saludar');
+			// boton.onclick = function() {
+			// 	console.log('Hola mundo');
+			// }
+			document.querySelector('#btn-saludar').onclick = function() {
+				console.log('Hola mundo');
+			}
+
+			console.log('tenía: ' + document.getElementById('link').getAttribute('href'));
+			document.getElementById('link').setAttribute('href', 'http://www.google.com');
+
+			document.getElementById('link').setAttribute('data-gaby', 'hola gaby');
+
+			if(document.getElementById('link').hasAttribute('href')) {
+				//document.getElementById('link').setAttribute('href', '');
+				document.getElementById('link').removeAttribute('href');
+			}
+
+			document.getElementById('link').style.display = 'none';
+
+
+			var parrafo = document.querySelector('#parrafo');
+
+			//propiedades para editar / consultar el contenido de un elemento
+			//parrafo.innerHTML = 'hola <a href="http://google.com">ir a google</a>';
+			parrafo.textContent = 'hola mundo';
+
+			var boton = document.createElement('button');
+			boton.textContent = 'botón creado por js';
+			boton.style.backgroundColor = 'red';
+			boton.onclick = function() { alert('holaaa'); }
+
+			//parrafo.appendChild(boton);
+
+
+			var ul = document.querySelector('ul');
+			var li;
+
+			for(i=0; i<4; i++) {
+				li = document.createElement('li');
+				li.textContent = 'soy el item nro ' + (i + 1);
+				ul.appendChild(li);
+			}
+
+			//ul.removeChild(ul.children[2]);
+			ul.children[2].remove();
+		}
+	</script>
+</head>
+<body>
+
+	<h1>Título de la página</h1>
+
+	<p class="parrafo">un párrafo</p>
+	<p class="parrafo">otro párrafo</p>
+
+	<p>otro párrafo más</p>
+
+	<button id="btn-saludar">Saludar</button>
+	<a href="#" id="link">Ir a google</a>
+
+
+	<p id="parrafo">
+		
+	</p>
+
+	<ul>
+		
+	</ul>
+
+
+</body>
+</html>

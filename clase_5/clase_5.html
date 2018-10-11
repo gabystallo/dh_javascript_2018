@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<p>
+		<button id="boton_1">Hermoso botón</button>
+	</p>
+
+	<p>
+		<button id="boton_2">Otro botón</button>
+	</p>
+
+	<p>
+		<a href="http://www.google.com" id="link_a_google">Link a google</a>
+	</p>
+
+
+	<p>
+		<input type="text" name="nombre">
+	</p>
+
+	<p>
+		<div id="area" style="width:200px; height:100px; background-color:grey"></div>
+	</p>
+
+
+	<p>
+		<a href="https://google.com" class="link">Link 1</a>
+		<a href="https://facebook.com" class="link">Link 2</a>
+	</p>
+
+	<script type="text/javascript">
+		
+
+		var boton = document.querySelector('#boton_1');
+		// boton.onclick = function() {
+		// 	console.log('hola, evento 1');
+		// }
+
+		//var evento1 = function() { console.log('hola, evento 1'); }
+		function evento1() { console.log('hola, evento 1'); }
+
+		boton.addEventListener('click', evento1);
+		boton.addEventListener('click', function() { console.log('hola, evento 2'); });
+
+		boton.removeEventListener('click', evento1);
+
+
+		///
+
+		var boton2 = document.querySelector('#boton_2');
+		boton2.addEventListener('click', function(evento) {
+			console.log('el click fue en X: ' + evento.clientX + ' y en Y: ' + evento.clientY);
+			//para ver todo lo que puedo obtener del evento
+			console.log(evento);
+		});
+
+		var link_a_google = document.querySelector('#link_a_google');
+		link_a_google.addEventListener('click', function(evento) {
+			var seguro = confirm('Seguro que querés ir a google?');
+			if(!seguro) {
+				evento.preventDefault();
+			}
+		});
+
+
+		document.body.addEventListener('keydown', function(e) {
+			console.log('tocaste la tecla código: ' + e.keyCode);
+		});
+
+
+		var area = document.querySelector('#area');
+		area.addEventListener('mouseover', function(e) {
+			console.log('entró al área');
+			area.style.backgroundColor = 'red';
+		});
+
+		area.addEventListener('mouseout', function(e) {
+			console.log('salió del área');
+			area.style.backgroundColor = 'gray';
+		});
+
+		area.addEventListener('mousemove', function(e) {
+			console.log('se movió el mouse, pasó por ' + e.clientX + ',' + e.clientY);
+		});
+
+		links = document.querySelectorAll('.link');
+		links.forEach(function(link) {
+
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				console.log('este link va a ' + this.getAttribute('href'));
+			});
+
+		});
+
+
+	</script>
+</body>
+</html>

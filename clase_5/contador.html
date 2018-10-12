@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contador</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<audio id="audio_oink">
+		<source src="oink.mp3" type="audio/mp3">
+	</audio>
+
+	<div id="cuenta" style="font-size:40px; font-weight:bold; color:red; font-family:sans-serif;"></div>
+
+
+	<p>
+		<button id="detener">pausa</button>
+		<button id="empezar">comenzar</button>
+
+		<button id="cambiar">frenar</button>
+	</p>
+
+
+	<script type="text/javascript">
+		
+		var contador = 0;
+
+		var cuenta = document.querySelector('#cuenta');
+
+		cuenta.innerHTML = contador;
+
+		var intervalo;
+
+		var contando;
+
+		var chancho = document.querySelector('#audio_oink');
+
+		function comenzar() {
+			intervalo = setInterval(function() {
+				contador += 1;
+				if(contador % 5 == 0) {
+					chancho.play();
+				}
+				cuenta.innerHTML = contador;
+			}, 1000);
+			contando = true;
+		}
+
+		comenzar();
+
+		var detener = document.querySelector('#detener');
+
+		detener.addEventListener('click', function() {
+			clearInterval(intervalo);
+			contando = false;
+		});
+
+		var empezar = document.querySelector('#empezar');
+
+		empezar.addEventListener('click', function() {
+			comenzar();
+		});
+
+		var cambiar = document.querySelector('#cambiar');
+		cambiar.addEventListener('click', function() {
+			if(contando) {
+				clearInterval(intervalo);
+				contando = false;
+				cambiar.innerHTML = 'arrancar';
+			} else {
+				comenzar();
+				cambiar.innerHTML = 'frenar';
+			}
+
+			chancho.play();
+		});
+
+	</script>
+
+</body>
+</html>

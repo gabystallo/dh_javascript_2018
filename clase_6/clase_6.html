@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div { margin-bottom:10px; }
+		label { font-size:18px; }
+		input,select,textarea { font-size:20px; }
+		button { font-size:25px; }
+		textarea { height:80px; }
+	</style>
+</head>
+<body>
+
+	<h1>Formulario</h1>
+
+	<form id="formulario" method="get" action="">
+		
+		<div>
+			<label>Nombre</label>
+			<input type="text" name="nombre" value="gaby">
+		</div>
+
+		<div>
+			<label>Email</label>
+			<input type="text" name="email">
+		</div>
+
+		<div>
+			<label>Nacimiento</label>
+			<input type="date" name="nacimiento">
+		</div>
+
+		<div>
+			<label>Sexo</label>
+			<label><input type="radio" name="sexo" value='m'> Masculino</label>
+			<label><input type="radio" name="sexo" value='f'> Femenino</label>
+		</div>
+
+		<div>
+			<label>Intereses</label>
+			<label><input type="checkbox" name="intereses" value='musica'> Música</label>
+			<label><input type="checkbox" name="intereses" value='deportes'> Deportes</label>
+			<label><input type="checkbox" name="intereses" value='juegos'> Juegos</label>
+			<label><input type="checkbox" name="intereses" value='libros'> Libros</label>
+		</div>
+
+		<div>
+			<label>Comuna</label>
+
+			<select name="comuna">
+				<option value="">Seleccionar comuna</option>
+				<option value="C1">Comuna 1</option>
+				<option value="C2">Comuna 2</option>
+				<option value="C3">Comuna 3</option>
+			</select>
+		</div>
+
+		<div>
+			<label>Barrio</label>
+			<select name="barrio">
+				<option value="">Seleccioná un barrio</option>
+			</select>
+		</div>
+
+		<div>
+			<label>Comentarios</label>
+			<textarea name="comentarios"></textarea>
+		</div>
+
+		<div>
+			<label>Patente</label>
+			<input type="text" name="patente">
+		</div>
+
+		<div>
+			<button type="submit">ENVIAR</button>
+		</div>
+
+	</form>
+
+
+	<script>
+		
+		var formulario = document.querySelector('form');
+
+		formulario.addEventListener('submit', function(evento) {
+
+			var nombre = document.querySelector('input[name="nombre"]');
+
+			if(nombre.value.trim().length < 3) {
+				alert('El nombre debe tener al menos 3 caracteres');
+				evento.preventDefault();
+				return;
+			}
+
+			// input tipo "date" para fechas
+			// 
+			// var nacimiento = document.querySelector('input[name="nacimiento"]');
+			// console.log(nacimiento.value);
+			
+			// textarea
+			// var comentarios = document.querySelector('textarea[name="comentarios"]');
+			// console.log(comentarios.value);
+			// comentarios.value = 'otro comentario';
+
+			// inputs tipo radio
+			// var sexo = document.querySelector('input[name="sexo"]:checked');
+			// if(!sexo) {
+			// 	alert('El campo sexo es obligatorio');
+			// 	evento.preventDefault();
+			// 	return;
+			// }
+			// console.log('el sexo es: ' + sexo.value);
+
+			// inputs tipo checkbox
+			// var intereses = [];
+			// document.querySelectorAll('input[name="intereses"]:checked').forEach(function(interes) {
+			// 	intereses.push(interes.value);
+			// });
+			// console.log('los intereses selectos son: ' + intereses.join(', '));
+
+			// var comuna = document.querySelector('select[name="comuna"]');
+			// console.log('comuna seleccionada: ' + comuna.options[comuna.selectedIndex].value);
+			// comuna.selectedIndex = 1;
+			// o más fácil:
+			// console.log('comuna seleccionada: ' + comuna.value);
+			// comuna.value = 'C2';
+			
+			// var email = document.querySelector('input[name="email"]');
+			// var regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+			// if(!regexMail.test(email.value)) {
+			// 	alert('El email es inválido');
+			// 	evento.preventDefault();
+			// 	return;
+			// }
+
+
+			var patente = document.querySelector('input[name="patente"]');
+			var regexPatente = /^[A-Z]{3}[\- ][0-9]{3}$/;
+
+			if(!regexPatente.test(patente.value)) {
+				//alert('La patente es inválida');
+				patente.style.backgroundColor = 'red';
+				evento.preventDefault();
+				return;
+			}
+
+
+			console.log('el formulario se postearía :-)');
+			evento.preventDefault();
+		});
+
+
+
+		var comuna = document.querySelector('select[name="comuna"]');
+		var barrio = document.querySelector('select[name="barrio"]');
+
+		var barrios = {
+			'C1': [{id: 'B1.1', descripcion: 'Barrio 1.1'}, {id: 'B1.2', descripcion: 'Barrio 1.2'}, {id: 'B1.3', descripcion: 'Barrio 1.3'}],
+			'C2': [{id: 'B2.1', descripcion: 'Barrio 2.1'}],
+			'C3': [{id: 'B3.1', descripcion: 'Barrio 3.1'}, {id: 'B3.2', descripcion: 'Barrio 3.2'}],
+		}
+
+		//console.log(barrios);
+
+		comuna.addEventListener('change', function(){
+
+			barrio.innerHTML = '';
+			var option;
+
+			option = document.createElement('option');
+			option.value = '';
+			option.innerHTML = 'Seleccioná un barrio';
+			barrio.appendChild(option);
+
+			if(comuna.value in barrios) {  /// if(isset(barrios[comuna.value]))
+				barrios[comuna.value].forEach(function(i_barrio) {
+					option = document.createElement('option');
+					option.value = i_barrio.id;
+					option.innerHTML = i_barrio.descripcion;
+					barrio.appendChild(option);
+				});
+			}
+			
+		});
+
+
+	</script>
+
+</body>
+</html>

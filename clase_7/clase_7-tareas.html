@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.tareas { width:300px; font-family:sans-serif; }
+		.tareas .tarea { padding:10px 0; border-bottom:1px solid black; }
+		.tareas .tarea .autor { font-weight:bold; margin-bottom:10px; }
+		.tareas .tarea .descripcion { margin-bottom:10px; }
+		.tareas .tarea .etiquetas { font-style:italic; }
+
+		.crear-tarea { margin-bottom:20px; width:300px; }
+		.crear-tarea input { width:100%; font-size:20px; }
+	</style>
+</head>
+<body>
+
+	<div class="crear-tarea">
+		
+		<input type="text" name="descripcion" placeholder="Nueva tarea">
+
+	</div>
+
+	<div class="tareas"></div>
+
+
+	
+
+
+
+	<script type="text/javascript">
+		
+		var http = new XMLHttpRequest;
+
+		http.onreadystatechange = function() {
+
+			//readyState == 4: significa que se completó el http request y ya está
+			//disponible el resultado (en responseText)
+			if(this.readyState == 4) {
+
+				//status == 200: significa que el servidor no devolvió ningún error,
+				//y la solicitud se completó ok
+				if(this.status == 200) {
+
+					var resultado = JSON.parse(this.responseText);
+
+					//console.log(resultado);
+
+					document.querySelector('.tareas').innerHTML = '';
+
+					resultado.tareas.forEach(function(tarea) {
+
+						var array_etiquetas = tarea.etiquetas.map(function(etiqueta) { return etiqueta.nombre });
+						var etiquetas = array_etiquetas.join(', ');
+
+						var html = '<div class="tarea"><div class="autor">' + tarea.autor.nombre + '</div><div class="descripcion">' + tarea.descripcion + '</div><div class="etiquetas">' + etiquetas + '</div></div>';
+
+						document.querySelector('.tareas').innerHTML += html;
+
+					});
+				}
+			}
+		}
+
+		setInterval(function() {
+			http.open('GET', 'http://127.0.0.1:8000/api/tareas?api_token=eo28tyn3895yotwerty923457yotv687ehotyeribgtv3or7trgot87drtbg');
+			http.send();
+		}, 1000);
+
+
+		document.querySelector('input[name="descripcion"]').addEventListener('keydown', function(e) {
+			if(e.keyCode == 13 && this.value.trim() != '') {
+				var post = new XMLHttpRequest;
+
+				post.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200) {
+						var respuesta = JSON.parse(post.responseText);
+						if(respuesta.resultado == 'ok') {
+							document.querySelector('input[name="descripcion"]').value = '';
+						}
+					}
+				}
+
+				post.open('POST', 'http://127.0.0.1:8000/api/tareas/crear?api_token=eo28tyn3895yotwerty923457yotv687ehotyeribgtv3or7trgot87drtbg');
+				post.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); //siempre que haga un método que no sea GET hay que poner esta línea
+				post.send('descripcion=' + document.querySelector('input[name="descripcion"]').value);
+
+			}
+		});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		
+		// convertir y desconvertir a json 
+		//
+		// var objeto = {
+		// 	nombre: 'gaby', edad: 32, saludar: function() { console.log('hola') },
+		// 	relacionados: [{id:1, descripcion:'hola'}, {id:2, descripcion:'chau'}]
+		// };
+
+		// console.log(JSON.stringify(objeto));
+
+
+		// var convertido = JSON.parse('{"usuario":{"id":1,"name":"Gaby","email":"gaby86@gmail.com","created_at":"2018-09-11 18:51:11","updated_at":"2018-09-11 19:41:17","rol":"admin"},"tareas":[{"id":1,"created_at":"2018-09-06 21:32:24","updated_at":"2018-10-18 00:52:33","id_autor":1,"descripcion":"Quis ullam","comentario":null,"autor":{"id":1,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Mr. Louvenia Murray MD"}},{"id":2,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","id_autor":2,"descripcion":"Quisquam et error nulla at id quam cupiditate.","comentario":null,"autor":{"id":2,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Prof. Michaela Wunsch DDS"}},{"id":3,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","id_autor":3,"descripcion":"Et quia fuga a eum eaque et eveniet.","comentario":null,"autor":{"id":3,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Jerad Hyatt"}},{"id":4,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","id_autor":4,"descripcion":"Et odit et facere enim.","comentario":null,"autor":{"id":4,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Olin Gibson"}},{"id":5,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","id_autor":5,"descripcion":"Et itaque expedita omnis corrupti.","comentario":null,"autor":{"id":5,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Prof. Vicente Beahan PhD"}},{"id":6,"created_at":"2018-09-10 18:49:25","updated_at":"2018-09-10 18:49:25","id_autor":1,"descripcion":"hola","comentario":null,"autor":{"id":1,"created_at":"2018-09-06 21:32:24","updated_at":"2018-09-06 21:32:24","nombre":"Mr. Louvenia Murray MD"}}]}');
+		// console.log(convertido);
+
+
+		var http = new XMLHttpRequest;
+
+		http.onreadystatechange = function() {
+
+			if(this.readyState == 4) {
+
+				if(this.status == 200) {
+
+					var resultado = JSON.parse(this.responseText);
+
+					console.log(resultado);
+					//console.log(resultado.provincias[0].nombre);
+
+				}
+			}
+		}
+
+		http.open('GET', 'https://apis.datos.gob.ar/georef/api/provincias?nombre=Sgo.%20del%20Estero');
+		http.send();
+
+		console.log('hola, la línea de abajo');
+	</script>
+</body>
+</html>

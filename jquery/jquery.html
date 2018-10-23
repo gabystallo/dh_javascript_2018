@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+	<style type="text/css">
+		.elementos { width:400px; margin:20px auto; border:1px solid gray; padding:10px; }
+		.elementos div { background-color:gray; text-align:center; padding:20px 0; font-size:32px; font-weight:bold; color:white; }
+	</style>
+
+	<script type="text/javascript">
+		$(function() {
+			$('.clase1').html('hola');
+			$('.clase1').css('color', 'red');
+			$('.clase1').first().click(function() { alert('hola') });
+			$('.clase1').first().click(function() { alert('chau') });
+
+			$.ajax({
+				url: 'https://apis.datos.gob.ar/georef/api/provincias?nombre=Sgo.%20del%20Estero',
+				success: function(data) {
+					console.log(data);
+				}
+			});
+
+			$('.elementos').slick({
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 3,
+				centerMode: true,
+  				centerPadding: '80px',
+			});
+
+		});
+	</script>
+
+</head>
+<body>
+
+	<div class="clase1"></div>
+
+	<div class="clase1"></div>
+
+	<div class="clase1"></div>
+
+	<div class="elementos">
+		<div>elemento 1</div>
+		<div>elemento 2</div>
+		<div>elemento 3</div>
+		<div>elemento 4</div>
+		<div>elemento 5</div>
+	</div>
+
+</body>
+</html>

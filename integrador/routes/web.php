@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Chat@index');
+Route::get('/obtener-mensajes', 'Chat@obtenerMensajes');
+Route::post('/crear-mensaje', 'Chat@crearMensaje');

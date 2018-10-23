@@ -1,0 +1,24 @@
+#general { padding:0 30px; }
+
+.mensajes {
+
+	width:500px;
+	height:500px;
+	overflow-y:scroll;
+	border:1px solid gray;
+	padding:10px;
+
+}
+
+.mensajes .mensaje { padding:20px; padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid gray; margin:0 20px; color:black; }
+.mensajes .mensaje .nombre { display:inline-block; margin-right:10px; font-style:italic; }
+
+.escribir {
+	margin-top:20px;
+	width:500px;
+}
+
+.escribir input {
+	width:100%; padding:8px 12px; border:1px solid gray;
+}
+

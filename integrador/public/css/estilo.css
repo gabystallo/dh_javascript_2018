@@ -1,24 +1,13 @@
-#general { padding:0 30px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+a { text-decoration:none; color:inherit; }
 
-.mensajes {
+body { font-family:sans-serif; padding:20px; }
 
-	width:500px;
-	height:500px;
-	overflow-y:scroll;
-	border:1px solid gray;
-	padding:10px;
+h1 { margin-bottom:20px; }
 
-}
+.mensajes { width:600px; height:400px; overflow-y:scroll; padding:10px; border:1px solid gray; }
+.mensaje { padding:10px; margin-bottom:10px; border-bottom:1px solid black; }
+.nombre { display:inline-block; margin-right:10px; font-style:italic; }
 
-.mensajes .mensaje { padding:20px; padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid gray; margin:0 20px; color:black; }
-.mensajes .mensaje .nombre { display:inline-block; margin-right:10px; font-style:italic; }
-
-.escribir {
-	margin-top:20px;
-	width:500px;
-}
-
-.escribir input {
-	width:100%; padding:8px 12px; border:1px solid gray;
-}
-
+.nuevo { width:600px; margin-top:10px; }
+.nuevo input { width:100%; padding:6px 10px; font-size:16px; }
